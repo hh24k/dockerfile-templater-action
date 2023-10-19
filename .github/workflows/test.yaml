@@ -1,0 +1,25 @@
+on: [push]
+
+jobs:
+  customized_action_test:
+    runs-on: ubuntu-latest
+    name: Test action
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v3
+      - name: Checkout dockerfile-templater
+        uses: actions/checkout@v3
+        with:
+          repository: bossm8/dockerfile-templater
+          path: dockerfile-templater
+      - name: Generate Dockerfiles
+        uses: ./
+        with:
+          dockerfile_tpl: dockerfile-templater/examples/simple/Dockerfile.tpl
+          variants_def: dockerfile-templater/examples/simple/variants.yml
+          dockerfile_tpl_dir: dockerfile-templater/examples/simple/includes
+          out_dir: test_dockerfiles
+      - name: Examine the generated Dockerfiles
+        run: |
+          ls -l test_dockerfiles
+          cat test_dockerfiles/*

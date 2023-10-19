@@ -1,0 +1,24 @@
+name: "Generate dockerfiles using dockerfile-templater"
+author: "Hai He <hai.he@enterprisedb.com>"
+description: >
+  This action generates dockerfiles using dockerfile-templater (see to: https://github.com/bossm8/dockerfile-templater)
+inputs:
+  dockerfile_tpl:
+    description: "The template file for the dockerfile"
+    required: true
+  variants_def:
+    description: "The definition file for the variants"
+    required: true
+  variants_cfg:
+    description: "The configuration file for the variants"
+    required: false
+  dockerfile_tpl_dir:
+    description: "The directory for the includible template files"
+    required: false
+  out_dir:
+    description: "The output directory for the generated dockerfiles"
+    required: false
+    default: "dockerfiles"
+runs:
+  using: "docker"
+  image: "Dockerfile"
