@@ -8,10 +8,12 @@ branding:
 inputs:
   dockerfile_tpl:
     description: "The template file for the dockerfile"
-    required: true
+    required: false
+    default: "Dockerfile.tpl"
   variants_def:
     description: "The definition file for the variants"
-    required: true
+    required: false
+    default: "variants.yml"
   variants_cfg:
     description: "The configuration file for the variants"
     required: false

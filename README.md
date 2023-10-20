@@ -12,14 +12,13 @@ To use this action in your workflow, add something like the following step to yo
       out_dir: dockerfiles
 ```
 ## Inputs
-### Required
-* **dockerfile_tpl** - Template file for the Dockerfile to be generated. 
-* **variants_def** - File defines the Dockerfile variants.
 ### Optional
+* **dockerfile_tpl** - Template file for the Dockerfile to be generated (default "Dockerfile.tpl").
+* **variants_def** - File defines the Dockerfile variants (default "variants.yml").
 * **variants_cfg** - Variants configuration file. 
-* **dockerfile_tpl_dir** - Directory containing the includable template definitions 
+* **dockerfile_tpl_dir** - Directory containing the includable template definitions. 
 * **dockerfile_var** - Key=Value pairs of additional variables/variable overrides which should be available when rendendering the Dockerfile template. 
-* **out_dir** - Directory to write generated Dockerfiles to (default "dockerfiles")
+* **out_dir** - Directory to write generated Dockerfiles to (default "dockerfiles").
 
 Check the [action.yml](action.yml) for the details.
 # Example
