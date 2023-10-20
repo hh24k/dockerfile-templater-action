@@ -15,6 +15,9 @@ inputs:
   dockerfile_tpl_dir:
     description: "The directory for the includible template files"
     required: false
+  dockerfile_var:
+    description: "The override variables for the dockerfile template"
+    required: false
   out_dir:
     description: "The output directory for the generated dockerfiles"
     required: false

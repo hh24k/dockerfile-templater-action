@@ -12,14 +12,26 @@ jobs:
         with:
           repository: bossm8/dockerfile-templater
           path: dockerfile-templater
-      - name: Generate Dockerfiles
+      - name: Generate Dockerfiles using examples/simple
         uses: ./
         with:
           dockerfile_tpl: dockerfile-templater/examples/simple/Dockerfile.tpl
           variants_def: dockerfile-templater/examples/simple/variants.yml
           dockerfile_tpl_dir: dockerfile-templater/examples/simple/includes
-          out_dir: test_dockerfiles
+          out_dir: dockerfiles_simple
+      - name: Generate Dockerfiles using examples/complex
+        uses: ./
+        with:
+          dockerfile_tpl: dockerfile-templater/examples/complex/Dockerfile.tpl
+          variants_def: dockerfile-templater/examples/complex/variants.yml.tpl
+          variants_cfg: dockerfile-templater/examples/complex/variants-conf.yml
+          out_dir: dockerfiles_complex
       - name: Examine the generated Dockerfiles
         run: |
-          ls -l test_dockerfiles
-          cat test_dockerfiles/*
+          echo "The generated Dockerfiles(from dockerfile-templater/examples/simple) are:"
+          ls -l dockerfiles_simple/
+          cat dockerfiles_simple/*
+          echo "============================================================"
+          echo "The generated Dockerfiles(from dockerfile-templater/examples/complex) are:"
+          ls -l dockerfiles_complex/
+          cat dockerfiles_complex/*
