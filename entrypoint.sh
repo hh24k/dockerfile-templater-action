@@ -1,7 +1,9 @@
 #!/bin/sh
 
+set -euo pipefail
+
 usage() {
-    templater -h
+    dockerfile-templater -h
     exit 1
 }
 
@@ -9,8 +11,7 @@ usage() {
 # e.g. INPUT_DOCKERFILE_TPL is the value of the dockerfile_tpl input
 # see https://help.github.com/en/articles/metadata-syntax-for-github-actions#example
 # Parse and validate the inputs
-echo "Running templater with the version:"
-dockerfile-templater --version
+echo "Running dockerfile-templater version: $(dockerfile-templater --version 2>&1)"
 
 set -- "--dockerfile.tpl" "$INPUT_DOCKERFILE_TPL" "--variants.def" "$INPUT_VARIANTS_DEF"
 
@@ -37,4 +38,4 @@ fi
 
 echo "Running dockerfile-templater with inputs:  $*"
 
-templater "$@"
+dockerfile-templater "$@"
